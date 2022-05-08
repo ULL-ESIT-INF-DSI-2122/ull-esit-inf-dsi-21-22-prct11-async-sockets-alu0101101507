@@ -8,7 +8,7 @@ describe('event', () => {
     let socket = new EventEmitter();
     let emit = new event(socket);
     
-    emit.on('message', (message) => {
+    emit.on('mensaje', (message) => {
       expect(message).to.be.eql({'titulo': 'Nota roja', 'cuerpo': 'Esto es una nota roja', 'color': 'Rojo'});
       done();
     });

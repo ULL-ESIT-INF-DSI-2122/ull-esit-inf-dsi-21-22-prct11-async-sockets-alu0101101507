@@ -5,7 +5,10 @@ import { Gestor } from '../Notas/gestor/gestor';
 import { event } from '../events/events';
 import { ResponseType } from '../types/types';
 
-
+/**
+ * Servidos que se encarga de procesar la request solicitada por el cliente, el cual se rediirige a la funcion que el cliente pida de la clase gestor, haciendo uso asi de la aplicacion de notas. 
+ * AL finalizar esto el servidor le mandara el mensaje de notificacion al cliente
+ */
 const server = net.createServer({allowHalfOpen: true}, (connection) => {
   console.log(chalk.green('Un cliente se ha conectado.'));
 
@@ -17,7 +20,6 @@ const server = net.createServer({allowHalfOpen: true}, (connection) => {
     let respuesta: ResponseType = {
       mensaje: '',
     }
-    console.log(mensaje.type)
     if (mensaje.type === 'add'){
       let newNota = new Nota(mensaje.titulo, mensaje.cuerpo, mensaje.color);
       respuesta.mensaje = gestor.addNota(mensaje.user, newNota)

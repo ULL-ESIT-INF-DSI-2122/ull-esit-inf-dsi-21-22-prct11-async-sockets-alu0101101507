@@ -3,7 +3,10 @@ import * as net from 'net';
 import { event } from '../events/events';
 import { RequestType } from '../types/types';
 
-
+/**
+ * En esta funcion es donde el cliente mandara la comunicacion con el servidor y poder trasmitirle la solicitud al servidor y que asi este le devuelva un mensaje y lo muestre por pantalla
+ * @param com parametros recogidos por linea de comandos
+ */
 export function Handler(com: RequestType){
 
   const socket = net.connect({port: 60300});
@@ -19,7 +22,6 @@ export function Handler(com: RequestType){
   });
   
   client.on('mensaje', (mensaje) => {
-      console.log("cualquier cosa");
       console.log(mensaje.mensaje);
   });
   
